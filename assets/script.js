@@ -17,13 +17,16 @@ const slides = [
 	}
 ]
 
+/*Variables*/
 let i = 0
 const arrows = document.querySelectorAll(".arrow")
 const sliderImage = document.querySelector(".banner-img")
+const banner = document.getElementById("banner")
 const sliderText = banner.querySelector("p")
 const sliderDots = document.querySelector(".dots")
 let dotElements = []
 
+/*Fonctions*/
 function activateBulletPoint() {
 	dotElements.forEach(dot => {
 			dot.classList.remove("dot_selected")
@@ -31,6 +34,13 @@ function activateBulletPoint() {
 		dotElements[i].classList.add("dot_selected")
 }
 
+function updateSlideElements() {
+	sliderImage.src = slides[i].image
+	sliderText.innerHTML = slides[i].tagLine
+	activateBulletPoint()
+}
+
+/*Ajout bullet points de base*/
 for(let i = 0; i < slides.length; i++) {
 	let dot = document.createElement("span")
 	dot.classList.add("dot")
@@ -42,7 +52,7 @@ for(let i = 0; i < slides.length; i++) {
 	}
 }
 
-
+/*Ajout EvenrListener*/
 arrows.forEach(arrow => {
 	arrow.addEventListener('click', event => {
 		let clickedArrow = event.target
@@ -60,9 +70,7 @@ arrows.forEach(arrow => {
 			}
 		}
 
-		sliderImage.src = slides[i].image
-		sliderText.innerHTML = slides[i].tagLine
-		activateBulletPoint()
+		updateSlideElements()
 
 		console.log(i)
 	})
