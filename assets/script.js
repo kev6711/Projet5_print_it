@@ -44,8 +44,14 @@ arrows.forEach(arrow => {
 
 		if(clickedArrow.classList.contains("arrow_right")) {
 			i++	
+			if(i >= slides.length) {
+				i = 0
+			}
 		} else {
 			i--
+			if(i < 0) {
+				i = slides.length - 1
+			}
 		}
 
 		sliderImage.src = slides[i].image
