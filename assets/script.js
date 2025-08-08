@@ -1,39 +1,62 @@
 const slides = [
 	{
-		"image":"slide1.jpg",
+		"image":"./assets/images/slideshow/slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
 	},
 	{
-		"image":"slide2.jpg",
+		"image":"./assets/images/slideshow/slide2.jpg",
 		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
 	},
 	{
-		"image":"slide3.jpg",
+		"image":"./assets/images/slideshow/slide3.jpg",
 		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
 	},
 	{
-		"image":"slide4.png",
+		"image":"./assets/images/slideshow/slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
 
+let i = 0
+
 const arrows = document.querySelectorAll(".arrow")
-
-arrows.forEach(arrow => {
-	arrow.addEventListener('click', event => {
-		let clickedArrow = event.target
-		console.log(`Flèche cliquée : ${clickedArrow.className}`);
-	})
-})
-
-let slideDots = document.querySelector(".dots")
+const sliderImage = document.querySelector(".banner-img")
+const sliderText = banner.querySelector("p")
+const sliderDots = document.querySelector(".dots")
+let dotElements = []
 
 for(let i = 0; i < slides.length; i++) {
 	let dot = document.createElement("span")
 	dot.classList.add("dot")
-	slideDots.appendChild(dot)
+	sliderDots.appendChild(dot)
+	dotElements.push(dot)
 
 	if(i === 0) {
 		dot.classList.add("dot_selected")
 	}
 }
+
+
+arrows.forEach(arrow => {
+	arrow.addEventListener('click', event => {
+		let clickedArrow = event.target
+		console.log(`Flèche cliquée : ${clickedArrow.className}`)
+
+		if(clickedArrow.classList.contains("arrow_right")) {
+			i++	
+		} else {
+			i--
+		}
+
+		sliderImage.src = slides[i].image
+		sliderText.innerHTML = slides[i].tagLine
+		
+		dotElements.forEach(dot => {
+			dot.classList.remove("dot_selected")
+		})
+		dotElements[i].classList.add("dot_selected")
+
+		console.log(i)
+	})
+})
+
