@@ -16,3 +16,12 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+const arrows = document.querySelectorAll(".arrow")
+
+arrows.forEach(arrow => {
+	arrow.addEventListener('click', event => {
+		let clickedArrow = event.target
+		console.log(`Flèche cliquée : ${clickedArrow.className}`);
+	})
+})
