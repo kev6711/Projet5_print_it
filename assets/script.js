@@ -25,3 +25,15 @@ arrows.forEach(arrow => {
 		console.log(`Flèche cliquée : ${clickedArrow.className}`);
 	})
 })
+
+let slideDots = document.querySelector(".dots")
+
+for(let i = 0; i < slides.length; i++) {
+	let dot = document.createElement("span")
+	dot.classList.add("dot")
+	slideDots.appendChild(dot)
+
+	if(i === 0) {
+		dot.classList.add("dot_selected")
+	}
+}
