@@ -18,12 +18,18 @@ const slides = [
 ]
 
 let i = 0
-
 const arrows = document.querySelectorAll(".arrow")
 const sliderImage = document.querySelector(".banner-img")
 const sliderText = banner.querySelector("p")
 const sliderDots = document.querySelector(".dots")
 let dotElements = []
+
+function activateBulletPoint() {
+	dotElements.forEach(dot => {
+			dot.classList.remove("dot_selected")
+		})
+		dotElements[i].classList.add("dot_selected")
+}
 
 for(let i = 0; i < slides.length; i++) {
 	let dot = document.createElement("span")
@@ -56,11 +62,7 @@ arrows.forEach(arrow => {
 
 		sliderImage.src = slides[i].image
 		sliderText.innerHTML = slides[i].tagLine
-		
-		dotElements.forEach(dot => {
-			dot.classList.remove("dot_selected")
-		})
-		dotElements[i].classList.add("dot_selected")
+		activateBulletPoint()
 
 		console.log(i)
 	})
