@@ -52,7 +52,7 @@ for(let i = 0; i < slides.length; i++) {
 	}
 }
 
-/*Ajout EvenrListener*/
+/*Ajout EventListener*/
 arrows.forEach(arrow => {
 	arrow.addEventListener('click', event => {
 		let clickedArrow = event.target
